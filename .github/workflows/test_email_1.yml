@@ -1,0 +1,34 @@
+# This is a basic workflow that is manually triggered
+
+name: send Email on push
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  push:
+    branches:
+      -main
+      
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
+jobs:
+  send_email:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Send Email
+      env:
+        EMAIL: ${{ secrets.EMAIL }}
+        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+        RECIPIENT_EMAIL: 'your-outlook-email@example.com'
+      run: |
+        python send_email.py
