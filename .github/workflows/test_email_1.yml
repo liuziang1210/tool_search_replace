@@ -23,12 +23,15 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'
+        python-version: '3.11'
 
     - name: Send Email
       env:
-        EMAIL: ${{ secrets.EMAIL }}
-        EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
-        RECIPIENT_EMAIL: 'your-outlook-email@example.com'
+        EMAIL_HOST: ${{ secrets.EMAIL_HOST }}
+        EMAIL_PORT: ${{ secrets.EMAIL_PORT }}
+        EMAIL_USER: ${{ secrets.EMAIL_USER }}
+        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
+        EMAIL_TO: ${{ secrets.EMAIL_TO }}
+        RECIPIENT_EMAIL: 'Ziang.Liu@BMW.de'
       run: |
         python send_email.py
