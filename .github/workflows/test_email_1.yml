@@ -14,7 +14,8 @@ on:
 
 jobs:
   send_email:
-    runs-on: windows-latest
+    #runs-on: windows-latest
+    runs-on: self-hosted
 
     steps:
     - name: Checkout repository
